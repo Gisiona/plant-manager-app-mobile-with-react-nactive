@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, StyleSheet, TouchableOpacity, TouchableOpacityProps } from 'react-native'
 import colors from '../../styles/colors'
+import { Feather } from '@expo/vector-icons'
 
 interface ButtonProps extends TouchableOpacityProps {
     title: any
@@ -24,13 +25,17 @@ const styles = StyleSheet.create({
         backgroundColor: colors.green,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: 38,
+        marginBottom: 28,
         height: 56,
-        width: 376,
-        borderRadius: 10
+        borderRadius: 10,
+        paddingBottom: 10
     },
     buttonText: {
         color: colors.white,
-        fontSize:24
-    }    
+        fontSize:20
+    },
+    buttonIcon: {
+        fontSize: 32,
+        color: colors.white
+    }
   })
