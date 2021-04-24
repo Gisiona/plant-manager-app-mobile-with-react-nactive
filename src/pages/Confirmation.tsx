@@ -4,14 +4,22 @@ import {
     StyleSheet, 
     SafeAreaView,
     View
-} from 'react-native'
+} from 'react-native';
+
+import { useNavigation } from '@react-navigation/core';
+
 import colors from '../../styles/colors'
 import fonts from '../../styles/fonts'
 import { Entypo } from '@expo/vector-icons'
 import { Button } from '../components/Button'
 
-
 export function Confirmation () {
+    const navigation = useNavigation();
+
+    function hendleNextPageSelectPlant () {
+        navigation.navigate('PlantSelect');
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             
@@ -23,7 +31,7 @@ export function Confirmation () {
                 <Text style={styles.subTitle}>Agora vamos começar a cuidar das suas plantinhas com muito cuidado. </Text>
 
                 <View style={styles.footerButtonView}>
-                    <Button title="Começar" />
+                    <Button title="Começar" onPress={hendleNextPageSelectPlant}/>
                 </View>
             </View>
         </SafeAreaView>

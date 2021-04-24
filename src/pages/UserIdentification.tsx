@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+
 import { 
     Text, 
     StyleSheet, 
@@ -8,10 +9,13 @@ import {
     KeyboardAvoidingView,
     TouchableWithoutFeedback,
     Platform,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import colors from '../../styles/colors'
 import fonts from '../../styles/fonts'
@@ -26,7 +30,14 @@ export function UserIdentification() {
 
     const navigation = useNavigation();
 
-    function hendleNextPageConfirmation () {
+    async function hendleNextPageConfirmation () {
+
+        if(!name) {
+            return Alert.alert("Digite seu nome para continuar!")
+        }
+
+        await AsyncStorage.setItem('@planttmanager:user', name);
+
         navigation.navigate('Confirmation');
     }
 
