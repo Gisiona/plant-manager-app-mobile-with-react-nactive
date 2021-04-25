@@ -15,25 +15,12 @@ import { PlantCardPrimary } from '../components/PlantCardPrimary';
 import { Load } from '../components/Load';
 
 import api from '../services/api';
-import { ForeignObject } from 'react-native-svg';
+import { useNavigation } from '@react-navigation/core';
+import { PlantsDataProps } from '../libs/storage';
 
 interface EnviromentDataProps {
     key: string,
     title: string
-}
-
-interface PlantsDataProps {
-    id: string;
-    name: string;
-    about: string;
-    water_tips: string;
-    photo: string;
-    environments: [string];
-    frequency: {
-        times: number;
-        repeat_every: string
-    }
-    
 }
 
 export function PlantSelect() {
@@ -46,9 +33,8 @@ export function PlantSelect() {
 
     const [page, setPage] = useState(1);
     const [limitePage, setLimitePage] = useState(6);
-    const [loadingMore, setLoadingMore] = useState(false);
-    const [loadedAll, setLoadedAll] = useState(false);
-    
+    const [loadingMore, setLoadingMore] = useState(false); 
+    const navigation = useNavigation();  
     
     useEffect( () => {
         async function fetchEnviroment() {
@@ -119,6 +105,11 @@ export function PlantSelect() {
         fetchPlants();
     }
 
+    function handlePlantSelect(plant: PlantsDataProps) {
+        console.log("Planta Selecionada: " + plant.name)
+        navigation.navigate('PlantSave', {plant})
+    }
+
     if(loading) {
         return <Load />
     }
@@ -158,7 +149,10 @@ export function PlantSelect() {
                     data={filteredPlants}
                     keyExtractor={(item) => String(item.id) }
                     renderItem={({ item }) => (
-                        <PlantCardPrimary data={item} />
+                        <PlantCardPrimary 
+                        data={item} 
+                        onPress={() => handlePlantSelect(item)}
+                    />
                     )}
                     showsVerticalScrollIndicator={false}
                     numColumns={2}

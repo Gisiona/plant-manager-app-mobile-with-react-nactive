@@ -19,7 +19,7 @@ export function Header() {
 
     useEffect(() => {
         getNameUserAsyncStorage();
-    }, []);
+    });
 
     async function getNameUserAsyncStorage() {
         const nameUser = await AsyncStorage.getItem('@planttmanager:user');

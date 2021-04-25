@@ -36,9 +36,19 @@ export function UserIdentification() {
             return Alert.alert("Digite seu nome para continuar!")
         }
 
-        await AsyncStorage.setItem('@planttmanager:user', name);
+        try {
+            await AsyncStorage.setItem('@planttmanager:user', name);
 
-        navigation.navigate('Confirmation');
+            navigation.navigate('Confirmation', {
+                title: 'Prontinho',
+                subTitle: 'Agora vamos começar a cuidar das suas plantinhas com muito cuidado.',
+                buttonTitle: 'Começar',
+                nextScreem: 'PlantSelect'
+            });
+
+        } catch (error) {
+            return Alert.alert("Não foi possível salvar o nome do usuário. Tente novamente.")
+        }        
     }
 
     function hendleInputBlur () {

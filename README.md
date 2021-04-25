@@ -16,8 +16,13 @@
 - npm install -g json-server
 - expo install react-native-svg
 - expo install lottie-react-native
+- expo install @react-native-community/datetimepicker
+- yarn add date-fns
+- yarn add @react-navigation/bottom-tabs
 
 
 # Sites recomendados
 - Expo https://docs.expo.io/
 - Lotie Animation https://lottiefiles.com/featured
+- AsyncStorage https://react-native-async-storage.github.io/async-storage/docs/usage/
+- Date-Fns https://date-fns.org/docs/Getting-Started/

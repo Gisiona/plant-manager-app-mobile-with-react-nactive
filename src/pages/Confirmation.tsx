@@ -6,18 +6,35 @@ import {
     View
 } from 'react-native';
 
-import { useNavigation } from '@react-navigation/core';
+import { useNavigation, useRoute } from '@react-navigation/core';
 
 import colors from '../../styles/colors'
 import fonts from '../../styles/fonts'
 import { Entypo } from '@expo/vector-icons'
 import { Button } from '../components/Button'
 
+
+interface ParamsRoute {
+    title: string,
+    subTitle: string,
+    buttonTitle: string,
+    nextScreem: string
+}
+
 export function Confirmation () {
     const navigation = useNavigation();
 
+    const routes = useRoute();
+
+    const {
+        title,
+        subTitle,
+        buttonTitle,
+        nextScreem
+    } = routes.params as ParamsRoute;
+
     function hendleNextPageSelectPlant () {
-        navigation.navigate('PlantSelect');
+        navigation.navigate(nextScreem);
     }
 
     return (
@@ -26,12 +43,12 @@ export function Confirmation () {
             <View style={styles.contentView}>   
                 <Entypo name="emoji-happy" style={styles.emoji} />
 
-                <Text style={styles.title}>Prontinho...</Text>
+                <Text style={styles.title}> {title} </Text>
                 
-                <Text style={styles.subTitle}>Agora vamos começar a cuidar das suas plantinhas com muito cuidado. </Text>
+                <Text style={styles.subTitle}> {subTitle} </Text>
 
                 <View style={styles.footerButtonView}>
-                    <Button title="Começar" onPress={hendleNextPageSelectPlant}/>
+                    <Button title={buttonTitle} onPress={hendleNextPageSelectPlant}/>
                 </View>
             </View>
         </SafeAreaView>
@@ -60,12 +77,12 @@ const styles = StyleSheet.create({
         fontSize: 28,
         textAlign: 'center',
         color: colors.heading,        
-        fontFamily: fonts.heading,
+        fontFamily: fonts.text,
         lineHeight: 38,
         marginTop: 15
     },
     subTitle: {
-        fontFamily: fonts.text,
+        fontFamily: fonts.heading,
         textAlign: 'center',
         fontSize: 18,
         paddingHorizontal: 20,
