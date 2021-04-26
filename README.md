@@ -28,3 +28,9 @@
 - Lotie Animation https://lottiefiles.com/featured
 - AsyncStorage https://react-native-async-storage.github.io/async-storage/docs/usage/
 - Date-Fns https://date-fns.org/docs/Getting-Started/
+
+
+# Materiais de apoio
+- Configuração de ambiente https://www.notion.so/Configura-es-do-ambiente-79e0e4c3e992462a9b11f2745b0f2785
+- Arquivos aixiliares https://www.notion.so/Material-para-a-aula-01-16cb87eb0a9b496dab5fc8a3b95b9cb0
+- Prototipo do App https://www.figma.com/file/CeHVsCSCsOZzj5bAom2vGm/PlantManager-Copy?fuid=838556455034893626
