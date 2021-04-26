@@ -19,6 +19,8 @@
 - expo install @react-native-community/datetimepicker
 - yarn add date-fns
 - yarn add @react-navigation/bottom-tabs
+- expo install expo-notifications
+
 
 
 # Sites recomendados
