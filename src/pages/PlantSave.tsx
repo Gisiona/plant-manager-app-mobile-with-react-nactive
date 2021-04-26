@@ -20,6 +20,7 @@ import DateTimePicker, {Event} from '@react-native-community/datetimepicker'
 import { isBefore } from 'date-fns'
 import { PlantsDataProps, savePlant } from '../libs/storage';
 import { useNavigation } from '@react-navigation/core';
+import { ScrollView } from 'react-native-gesture-handler';
 
 interface ParamsProps {
     plant: PlantsDataProps;
@@ -73,48 +74,53 @@ export function PlantSave() {
 
 
     return (
-        <View style={styles.container}>
-            <View style={styles.plantInfo}>
-                <SvgFromUri
-                    uri={plant.photo}
-                    width={150}
-                    height={150}
-                />
+        <ScrollView
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.container}
+        >
+            <View style={styles.container}>
+                <View style={styles.plantInfo}>
+                    <SvgFromUri
+                        uri={plant.photo}
+                        width={150}
+                        height={150}
+                    />
 
-                <Text style={styles.plantName}>
-                    {plant.name}
-                </Text>
+                    <Text style={styles.plantName}>
+                        {plant.name}
+                    </Text>
 
-                <Text style={styles.plantObout}>
-                    {plant.about}
-                </Text>
-            </View>
-
-            <View style={styles.controller}>
-                <View style={styles.tipContainer}>
-                    <Image source={waterDrop} style={styles.tipImage}/>
-                        
-                    <Text style={styles.tipText}>
-                        {plant.water_tips}
+                    <Text style={styles.plantObout}>
+                        {plant.about}
                     </Text>
                 </View>
 
-                <Text style={styles.alertLabel}>
-                    Ecolha o melhor horário para ser lembrado:
-                </Text>   
+                <View style={styles.controller}>
+                    <View style={styles.tipContainer}>
+                        <Image source={waterDrop} style={styles.tipImage}/>
+                            
+                        <Text style={styles.tipText}>
+                            {plant.water_tips}
+                        </Text>
+                    </View>
 
-                <DateTimePicker
-                    value={selectedDatePicker}
-                    mode="time"
-                    display="spinner"
-                    onChange={handleChangeTime}
-                />
-                <Button title="Cadastrar planta" 
-                    onPress={handleSave}
-                />
+                    <Text style={styles.alertLabel}>
+                        Ecolha o melhor horário para ser lembrado:
+                    </Text>   
 
+                    <DateTimePicker
+                        value={selectedDatePicker}
+                        mode="time"
+                        display="spinner"
+                        onChange={handleChangeTime}
+                    />
+                    <Button title="Cadastrar planta" 
+                        onPress={handleSave}
+                    />
+
+                </View>
             </View>
-        </View>
+        </ScrollView>        
     )
 }
 
@@ -158,7 +164,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         backgroundColor: colors.blue_light,
-        padding: 10, 
+        padding: 20, 
         borderRadius: 15,
         position: 'relative',
         bottom: 20,
